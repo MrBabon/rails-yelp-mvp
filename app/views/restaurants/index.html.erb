@@ -1,2 +1,30 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<h1 class="text-center">Restaurant</h1>
+<% @restaurants.each do |resto| %>
+  <%= link_to restaurant_path(resto) do%>
+    <div class="d-flex justify-content-evenly">
+      <div>
+        <div>
+          <%= resto.name %>
+        </div>
+        <hr>
+        <div>
+          <%= resto.category %>
+        </div>
+        <hr>
+        <div>
+          <%= resto.address %>
+        </div>
+        <hr>
+        <div>
+          <%= resto.phone_number %>
+        </div>
+        <hr>
+      </div>
+      <div>
+        <%= link_to "Change Me", edit_restaurant_path(resto), class: 'btn btn-primary' %>
+        <%= link_to "Delete Me", restaurant_path(resto), data: {turbo_method: :delete, turbo_confirm: 'oh no..' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+  <hr>
+<% end %>

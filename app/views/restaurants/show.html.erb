@@ -1,2 +1,30 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><%= @restaurant.name %></h1>
+    <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-light btn-sm border' do %>
+      <i class="fa fa-pencil"></i> Edit this restaurant
+    <% end %>
+  </div>
+  <hr>
+  <p class="well"><%= @restaurant.address %></p>
+  <p class="well"><%= @restaurant.phone_number %></p>
+  <hr>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <p><strong>Reviews</strong></p>
+    <%= link_to new_restaurant_review_path(@restaurant), class: 'btn btn-light btn-sm border' do %>
+      <i class="fa fa-pencil"></i> Edit a new comment
+    <% end %>
+  </div>
+<div class="d-flex">
+  <% @restaurant.reviews.each do |review| %>
+    <p class=""><%= review.content %> | </p>
+    <p class="">| <%= review.rating %> <i class="bi bi-star-fill"></i> / 5</p>
+  <% end %>
+</div>
+<br>
+
+  <hr>
+  <%= link_to restaurants_path do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
+  <% end %>
+</div>
